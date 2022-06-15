@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+  app:
+    image: 'spring-boot-postgres'
+    container_name: app
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - 8443:8443
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/login
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=258305
+      - SPRING_JPA_HIBERNATE_DDL=true
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_SHOW_SQL=true
+  db:
+    image: 'postgres:13.1-alpine'
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=login
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=258305
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  frontend:
+    image: 'html-css'
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+    - app
+    - db
+    ports:
+    - 80:80
+
+volumes:
+  db-data:

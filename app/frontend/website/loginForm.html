@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="login-style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="loginBox">
+      <form>
+        <div class="inputBox">
+          <input type="text" value="abc@example.com" id="username_id" />
+        </div>
+        <div class="inputBox">
+          <input type="password" value="0000000" id="password_id" />
+        </div>
+        <!-- <div>
+          <label> Remember password <input type="checkbox" /></label>
+        </div> -->
+        <br />
+        <div>
+          <button
+            class="inputLogin"
+            style="float: left; width: 30%"
+            onclick="addLogin()"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+    <!-- <script>
+      alert("helou");
+    </script> -->
+    <script src="login-rest.js"></script>
+  </body>
+</html>
